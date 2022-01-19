@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.springframework.org/security/tags">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Authorization</title>
+</head>
+<body>
+<!--<sec:authorize access="isAuthenticated()">-->
+<!--    <% response.sendRedirect("/"); %>-->
+<!--</sec:authorize>-->
+<div>
+    <form method="post" action="/login">
+        <label for="name">User name:</label>
+        <input name="j_username" id="name" placeholder="Username"/>
+
+        <label for="password">User password:</label>
+        <input name="j_password" id="password" placeholder="Password"/>
+
+        <input type="submit"/>
+    </form>
+</div>
+
+<div th:if="${param.error}" class="alert alert-error">
+    Invalid username and password.
+</div>
+
+</body>
+</html>

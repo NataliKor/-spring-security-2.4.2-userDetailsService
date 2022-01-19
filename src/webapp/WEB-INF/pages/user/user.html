@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello User</title>
+</head>
+<body>
+<form th:action="@{/user}" th:object="${user}" th:method="GET">
+    <div>
+        <label for="name">Your Name</label>
+        <input type="text" th:field="*{username}" id="name" th:value="${user.username}">
+
+        <br/>
+
+        <label for="lastName">Your LastName</label>
+        <input type="text" th:field="*{lastName}" id="lastName" th:value="${user.lastName}">
+
+        <br/>
+
+        <label for="age">Your Age</label>
+        <input type="number" th:field="*{age}" id="age" th:value="${user.age}">
+
+        <br/>
+
+        <label for="password">Your Password</label>
+        <input type="text" th:field="*{password}" id="password" th:value="${user.password}">
+
+        <br/>
+
+        <label for="role">Your role:</label>
+        <input type="text" th:field="*{stringRoles}" id="role" th:value="${user.getStringRoles()}">
+
+    </div>
+</form>
+
+<form name='f' action='/logout' method='POST'>
+    <input name="logout" type="submit" value="Log out"/>
+    <input name="${_csrf.parameterName}" type="hidden"
+           value="${_csrf.token}"/>
+</form>
+
+</body>
+</html>

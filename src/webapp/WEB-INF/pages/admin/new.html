@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add user</title>
+</head>
+<body>
+<form th:action="@{/}" th:object="${user}" th:method="POST">
+
+    <label for="username">Username</label>
+    <input id="username" type="text" th:field="*{username}" th:value="${user.username}" placeholder="Name">
+
+    <br/>
+
+    <label for="lastname">Lastname</label>
+    <input id="lastname" type="text" th:field="*{lastName}" th:value="${user.lastName}" placeholder="LastName">
+
+    <br/>
+
+    <label for="age">Age</label>
+    <input id="age" type="text" th:field="*{age}" th:value="${user.age}" placeholder="Age">
+
+    <br/>
+
+    <label for="password">Password</label>
+    <input id="password" type="text" th:field="*{password}" th:value="${user.password}" placeholder="Password">
+
+    <br/>
+
+    <label for="rol">Roles</label>
+    <select id="rol" th:field="*{roles}" multiple>
+        <option th:value="'ADMIN'" th:text="ADMIN"></option>
+        <option th:value="'USER'" th:text="USER"></option>
+    </select>
+
+    <br/>
+
+    <input type="submit" value="Add user"/>
+</form>
+
+<br/>
+
+<form name='f' action='/logout' method='POST'>
+    <input name="logout" type="submit" value="Log out"/>
+    <input name="${_csrf.parameterName}" type="hidden"
+           value="${_csrf.token}"/>
+</form>
+</body>
+</html>
